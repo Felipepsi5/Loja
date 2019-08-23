@@ -1,0 +1,9 @@
+C:\Users\fpiments\Desktop\Loja\Loja.Domain\bin\Debug\netstandard2.0\Loja.Domain.deps.json
+C:\Users\fpiments\Desktop\Loja\Loja.Domain\bin\Debug\netstandard2.0\Loja.Domain.dll
+C:\Users\fpiments\Desktop\Loja\Loja.Domain\bin\Debug\netstandard2.0\Loja.Domain.pdb
+C:\Users\fpiments\Desktop\Loja\Loja.Domain\obj\Debug\netstandard2.0\Loja.Domain.csprojAssemblyReference.cache
+C:\Users\fpiments\Desktop\Loja\Loja.Domain\obj\Debug\netstandard2.0\Loja.Domain.csproj.CoreCompileInputs.cache
+C:\Users\fpiments\Desktop\Loja\Loja.Domain\obj\Debug\netstandard2.0\Loja.Domain.AssemblyInfoInputs.cache
+C:\Users\fpiments\Desktop\Loja\Loja.Domain\obj\Debug\netstandard2.0\Loja.Domain.AssemblyInfo.cs
+C:\Users\fpiments\Desktop\Loja\Loja.Domain\obj\Debug\netstandard2.0\Loja.Domain.dll
+C:\Users\fpiments\Desktop\Loja\Loja.Domain\obj\Debug\netstandard2.0\Loja.Domain.pdb
