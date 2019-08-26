@@ -16,10 +16,12 @@ namespace Loja.Repository.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
-            modelBuilder.Entity("Loja_Domain.Categorias", b =>
+            modelBuilder.Entity("Loja.Domain.Categorias", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Descricao");
 
@@ -32,7 +34,7 @@ namespace Loja.Repository.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("Loja_Domain.Clientes", b =>
+            modelBuilder.Entity("Loja.Domain.Clientes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -41,7 +43,11 @@ namespace Loja.Repository.Migrations
 
                     b.Property<string>("Cidade");
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Endereco");
+
+                    b.Property<string>("Nome");
 
                     b.Property<string>("Pais");
 
@@ -54,7 +60,7 @@ namespace Loja.Repository.Migrations
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("Loja_Domain.Fornecedores", b =>
+            modelBuilder.Entity("Loja.Domain.Fornecedores", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -64,6 +70,8 @@ namespace Loja.Repository.Migrations
                     b.Property<string>("CargoDoContato");
 
                     b.Property<string>("Cidade");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Endereco");
 
@@ -82,10 +90,12 @@ namespace Loja.Repository.Migrations
                     b.ToTable("Fornecedores");
                 });
 
-            modelBuilder.Entity("Loja_Domain.ItensPedidos", b =>
+            modelBuilder.Entity("Loja.Domain.ItensPedidos", b =>
                 {
                     b.Property<int?>("ProdutosId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<int>("Desconto");
 
@@ -101,10 +111,10 @@ namespace Loja.Repository.Migrations
 
                     b.HasIndex("PedidosClientesId");
 
-                    b.ToTable("itensPedidos");
+                    b.ToTable("ItensPedidos");
                 });
 
-            modelBuilder.Entity("Loja_Domain.Pedidos", b =>
+            modelBuilder.Entity("Loja.Domain.Pedidos", b =>
                 {
                     b.Property<int?>("ClientesId")
                         .ValueGeneratedOnAdd();
@@ -138,11 +148,13 @@ namespace Loja.Repository.Migrations
                     b.ToTable("Pedidos");
                 });
 
-            modelBuilder.Entity("Loja_Domain.Produtos", b =>
+            modelBuilder.Entity("Loja.Domain.Produtos", b =>
                 {
                     b.Property<int>("FornecedoresId");
 
                     b.Property<int>("CategoriasId");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<byte>("Descontinuado");
 
@@ -165,28 +177,28 @@ namespace Loja.Repository.Migrations
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("Loja_Domain.ItensPedidos", b =>
+            modelBuilder.Entity("Loja.Domain.ItensPedidos", b =>
                 {
-                    b.HasOne("Loja_Domain.Pedidos", "Pedidos")
+                    b.HasOne("Loja.Domain.Pedidos", "Pedidos")
                         .WithMany()
                         .HasForeignKey("PedidosClientesId");
                 });
 
-            modelBuilder.Entity("Loja_Domain.Pedidos", b =>
+            modelBuilder.Entity("Loja.Domain.Pedidos", b =>
                 {
-                    b.HasOne("Loja_Domain.Clientes", "Clientes")
+                    b.HasOne("Loja.Domain.Clientes", "Clientes")
                         .WithMany()
                         .HasForeignKey("ClientesId1");
                 });
 
-            modelBuilder.Entity("Loja_Domain.Produtos", b =>
+            modelBuilder.Entity("Loja.Domain.Produtos", b =>
                 {
-                    b.HasOne("Loja_Domain.Categorias", "Categorias")
+                    b.HasOne("Loja.Domain.Categorias", "Categorias")
                         .WithMany()
                         .HasForeignKey("CategoriasId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Loja_Domain.Fornecedores", "Fornecedores")
+                    b.HasOne("Loja.Domain.Fornecedores", "Fornecedores")
                         .WithMany()
                         .HasForeignKey("FornecedoresId")
                         .OnDelete(DeleteBehavior.Cascade);

@@ -15,7 +15,8 @@ namespace Loja.Repository.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     NomeDaCategoria = table.Column<string>(nullable: true),
                     Descricao = table.Column<string>(nullable: true),
-                    Figura = table.Column<string>(nullable: true)
+                    Figura = table.Column<string>(nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,12 +29,14 @@ namespace Loja.Repository.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Nome = table.Column<string>(nullable: true),
                     Endereco = table.Column<string>(nullable: true),
                     Cidade = table.Column<string>(nullable: true),
                     CEP = table.Column<string>(nullable: true),
                     UF = table.Column<string>(nullable: true),
                     Pais = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: true)
+                    Telefone = table.Column<string>(nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,7 +57,8 @@ namespace Loja.Repository.Migrations
                     UF = table.Column<string>(nullable: true),
                     CEP = table.Column<string>(nullable: true),
                     Pais = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: true)
+                    Telefone = table.Column<string>(nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,7 +106,8 @@ namespace Loja.Repository.Migrations
                     PrecoUnitario = table.Column<decimal>(nullable: false),
                     UnidadesEmEstoque = table.Column<int>(nullable: false),
                     UnidadesPedidas = table.Column<int>(nullable: false),
-                    Descontinuado = table.Column<byte>(nullable: false)
+                    Descontinuado = table.Column<byte>(nullable: false),
+                    DataCadastro = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -122,7 +127,7 @@ namespace Loja.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "itensPedidos",
+                name: "ItensPedidos",
                 columns: table => new
                 {
                     ProdutosId = table.Column<int>(nullable: false)
@@ -131,13 +136,14 @@ namespace Loja.Repository.Migrations
                     PedidosClientesId = table.Column<int>(nullable: true),
                     PrecoUnitario = table.Column<decimal>(nullable: false),
                     Quantidade = table.Column<int>(nullable: false),
-                    Desconto = table.Column<int>(nullable: false)
+                    Desconto = table.Column<int>(nullable: false),
+                    DataCadastro = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_itensPedidos", x => x.ProdutosId);
+                    table.PrimaryKey("PK_ItensPedidos", x => x.ProdutosId);
                     table.ForeignKey(
-                        name: "FK_itensPedidos_Pedidos_PedidosClientesId",
+                        name: "FK_ItensPedidos_Pedidos_PedidosClientesId",
                         column: x => x.PedidosClientesId,
                         principalTable: "Pedidos",
                         principalColumn: "ClientesId",
@@ -145,8 +151,8 @@ namespace Loja.Repository.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_itensPedidos_PedidosClientesId",
-                table: "itensPedidos",
+                name: "IX_ItensPedidos_PedidosClientesId",
+                table: "ItensPedidos",
                 column: "PedidosClientesId");
 
             migrationBuilder.CreateIndex(
@@ -163,7 +169,7 @@ namespace Loja.Repository.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "itensPedidos");
+                name: "ItensPedidos");
 
             migrationBuilder.DropTable(
                 name: "Produtos");

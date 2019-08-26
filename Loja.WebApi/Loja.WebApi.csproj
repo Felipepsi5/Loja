@@ -5,11 +5,12 @@
     <RootNamespace>Loja.WebApi</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.App"/>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0"/>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Loja.Domain\Loja.Domain.csproj" />
-    <ProjectReference Include="..\Loja.Repository\Loja.Repository.csproj" />
+    <ProjectReference Include="..\Loja.Domain\Loja.Domain.csproj"/>
+    <ProjectReference Include="..\Loja.Repository\Loja.Repository.csproj"/>
   </ItemGroup>
 </Project>

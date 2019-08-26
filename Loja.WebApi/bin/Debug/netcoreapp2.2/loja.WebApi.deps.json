@@ -22,19 +22,20 @@
   },
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "loja.WebApi/1.0.0": {
+      "Loja.WebApi/1.0.0": {
         "dependencies": {
           "Loja.Domain": "1.0.0",
           "Loja.Repository": "1.0.0",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Sqlite": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0"
         },
         "runtime": {
-          "loja.WebApi.dll": {}
+          "Loja.WebApi.dll": {}
         },
         "compile": {
-          "loja.WebApi.dll": {}
+          "Loja.WebApi.dll": {}
         }
       },
       "Microsoft.Data.Sqlite.Core/2.2.0": {
@@ -3410,7 +3411,7 @@
     }
   },
   "libraries": {
-    "loja.WebApi/1.0.0": {
+    "Loja.WebApi/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

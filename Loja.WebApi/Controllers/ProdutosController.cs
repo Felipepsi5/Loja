@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Loja.Repository;
 using Microsoft.AspNetCore.Http;
-
+using Loja.Domain;
 namespace Loja.WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -49,7 +49,7 @@ namespace Loja.WebApi.Controllers
         
         // GET api/values
         [HttpPost]
-        public async Task<IActionResult> Post(Produto model)
+        public async Task<IActionResult> Post(Produtos model)
         {
             try
             {
@@ -67,11 +67,11 @@ namespace Loja.WebApi.Controllers
             return BadRequest();
         }
         [HttpPut]
-        public async Task<IActionResult> Put(int ProdutoId, Produto model)
+        public async Task<IActionResult> Put(int ProdutoId, Produtos model)
         {
             try
             {
-                var produto = await _repo.GetProdutosAsyncById(ProdutoId)
+                var produto = await _repo.GetProdutosAsyncById(ProdutoId);
                 if(produto == null ) return NotFound();
 
                _repo.Update(model);
@@ -89,14 +89,14 @@ namespace Loja.WebApi.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Put(int ProdutoId)
+        public async Task<IActionResult> Delete(int ProdutoId)
         {
             try
             {
-                var produto = await _repo.GetProdutosAsyncById(ProdutoId)
+                var produto = await _repo.GetProdutosAsyncById(ProdutoId);
                 if(produto == null ) return NotFound();
 
-               _repo.Delete(model);
+               _repo.Delete(produto);
                if(await _repo.SaveChangesAsync())
                {
                   return Ok();

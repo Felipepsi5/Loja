@@ -7,10 +7,10 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("loja.WebApi")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Loja.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("loja.WebApi")]
-[assembly: System.Reflection.AssemblyTitleAttribute("loja.WebApi")]
+[assembly: System.Reflection.AssemblyProductAttribute("Loja.WebApi")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Loja.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

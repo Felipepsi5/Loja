@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebAPI\\loja.WebApi.csproj": {}
+    "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebApi\\Loja.WebApi.csproj": {}
   },
   "projects": {
     "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.Domain\\Loja.Domain.csproj": {
@@ -116,14 +116,14 @@
         }
       }
     },
-    "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebAPI\\loja.WebApi.csproj": {
+    "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebApi\\Loja.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebAPI\\loja.WebApi.csproj",
-        "projectName": "loja.WebApi",
-        "projectPath": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebAPI\\loja.WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebApi\\Loja.WebApi.csproj",
+        "projectName": "Loja.WebApi",
+        "projectPath": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebApi\\Loja.WebApi.csproj",
         "packagesPath": "C:\\Users\\fpiments\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -166,6 +166,10 @@
             },
             "Microsoft.AspNetCore.Razor.Design": {
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[2.2.0, )"
             },

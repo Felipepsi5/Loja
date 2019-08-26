@@ -12444,6 +12444,7 @@
       "Loja.Repository >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
+      "Microsoft.EntityFrameworkCore.Sqlite >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0"
     ]
   },
@@ -12454,11 +12455,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebAPI\\loja.WebApi.csproj",
-      "projectName": "loja.WebApi",
-      "projectPath": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebAPI\\loja.WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebApi\\Loja.WebApi.csproj",
+      "projectName": "Loja.WebApi",
+      "projectPath": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebApi\\Loja.WebApi.csproj",
       "packagesPath": "C:\\Users\\fpiments\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebAPI\\obj\\",
+      "outputPath": "C:\\Users\\fpiments\\Desktop\\Loja\\Loja.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12501,6 +12502,10 @@
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[2.2.0, )"
           },
