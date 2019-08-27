@@ -6,7 +6,7 @@ namespace Loja.Domain
     {
         public int Id { get; set; }
         public int? ProdutosId { get; set; }
-        public Pedidos Pedidos{ get; set;}
+        public Pedidos Pedidos{ get; }
         public decimal PrecoUnitario { get; set; }
         public int Quantidade { get; set; }
         public int Desconto { get; set; }    

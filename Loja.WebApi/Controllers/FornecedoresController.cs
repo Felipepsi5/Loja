@@ -11,10 +11,10 @@ namespace Loja.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutosController : ControllerBase
+    public class FornecedoresController : ControllerBase
     {
         private readonly ILojaRepository _repo;
-        public ProdutosController(ILojaRepository repo)
+        public FornecedoresController(ILojaRepository repo)
         {
             _repo = repo;            
         }
@@ -24,7 +24,7 @@ namespace Loja.WebApi.Controllers
         {
             try
             {
-               var results = await _repo.GetAllProdutosAsync();
+               var results = await _repo.GetAllFornecedoresAsync();
                return Ok(results);
             }
             catch(System.Exception)
@@ -33,13 +33,12 @@ namespace Loja.WebApi.Controllers
             }
         }
 
-        // GET api/values
         [HttpGet("{Id}")]
         public async Task<IActionResult> Get(int Id)
         {
             try
             {
-               var results = await _repo.GetProdutosAsyncById(Id);
+               var results = await _repo.GetFornecedoresAsyncById(Id);
                return Ok(results);
             }
             catch(System.Exception)
@@ -48,39 +47,35 @@ namespace Loja.WebApi.Controllers
             }
         }
         
-        // GET api/values
         [HttpPost]
-        public async Task<IActionResult> Post(Produtos model)
+        public async Task<IActionResult> Post(Fornecedores model)
         {
             try
             {
-               _repo.Add(model);
-
+               _repo.Add(model);               
                if(await _repo.SaveChangesAsync())
                {
-                  return Created($"/api/Produtos/{model.Id}", model);
-               }           
+                  return Created($"/api/Fornecedores/{model.Id}", model);
+               }              
             }
             catch(System.Exception)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco Dados Falhou");
             }
             return BadRequest();
-        }
+        }        
         [HttpPut("{Id}")]
-        public async Task<IActionResult> Put(int Id, Produtos model)
+        public async Task<IActionResult> Put(int Id, Fornecedores model)
         {
             try
             {
-                var produto = await _repo.GetProdutosAsyncById(Id);
-                if(produto == null ) return NotFound();
-
-               _repo.Update(produto);
+                var fornecedor = await _repo.GetFornecedoresAsyncById(Id);
+                if(fornecedor == null ){ return NotFound();}
+               _repo.Update(model);     
                if(await _repo.SaveChangesAsync())
                {
-                  return Created($"/api/Produto/{model.Id}", model);
-               }
-              
+                 return Created($"/api/Fornecedores/{model.Id}", model);   
+               }                      
             }
             catch(System.Exception)
             {
@@ -89,18 +84,18 @@ namespace Loja.WebApi.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> Delete(int Id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id, Fornecedores model)
         {
             try
             {
-                var produto = await _repo.GetProdutosAsyncById(Id);
-                if(produto == null ) return NotFound();
+                var fornecedor = await _repo.GetFornecedoresAsyncById(id);
+                if(fornecedor == null ) return NotFound();
 
-               _repo.Delete(produto);
+               _repo.Delete(fornecedor);
                if(await _repo.SaveChangesAsync())
                {
-                  return Ok();
+                 return Ok();
                }
               
             }

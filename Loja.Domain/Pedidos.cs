@@ -6,7 +6,7 @@ namespace Loja.Domain
     {
         public int Id { get; set; }
         public int? ClientesId{get;set;}
-        public Clientes Clientes{get;set;}
+        public Clientes Clientes{get;}
         public DateTime? DataDoPedido { get; set; }
         public DateTime? DataDeEntrega{get;set;}
         public DateTime? DataDeEnvio { get; set; }

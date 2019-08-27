@@ -12,6 +12,7 @@ namespace Loja.Repository
         public LojaRepository(LojaContext context)
         {
             _context = context;
+            _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
         public void Add<T>(T entity) where T : class
         {
@@ -37,7 +38,8 @@ namespace Loja.Repository
         {
            IQueryable<Categorias> query = _context.Categorias;
           
-           query = query.OrderByDescending(x=>x.DataCadastro);
+           query = query.AsNoTracking()
+                        .OrderByDescending(x=>x.DataCadastro);
 
            return await query.ToArrayAsync();
 
@@ -46,7 +48,8 @@ namespace Loja.Repository
         {
            IQueryable<Categorias> query = _context.Categorias;
           
-           query = query.OrderByDescending(x=>x.DataCadastro)
+           query = query.AsNoTracking()
+                        .OrderByDescending(x=>x.DataCadastro)
            .Where(x=>x.Id == CategoriasId);
 
            return await query.FirstOrDefaultAsync();
@@ -56,14 +59,16 @@ namespace Loja.Repository
         {
             IQueryable<Clientes> query = _context.Clientes;
 
-             query = query.OrderByDescending(x=>x.DataCadastro);
+             query = query.AsNoTracking()
+                          .OrderByDescending(x=>x.DataCadastro);
             return await query.ToArrayAsync();
         }
         public async Task<Clientes> GetClientesAsyncById(int ClientesId)
         {
              IQueryable<Clientes> query = _context.Clientes;
 
-             query = query.OrderByDescending(x=>x.DataCadastro)
+             query = query.AsNoTracking()
+                     .OrderByDescending(x=>x.DataCadastro)
                      .Where(x=>x.Id == ClientesId);
             return await query.FirstOrDefaultAsync();
 
@@ -73,7 +78,8 @@ namespace Loja.Repository
         {
             IQueryable<Fornecedores> query = _context.Fornecedores;
 
-            query = query.OrderByDescending(x=>x.DataCadastro);
+            query = query.AsNoTracking()
+                         .OrderByDescending(x=>x.DataCadastro);
 
             return await query.ToArrayAsync();
         }
@@ -81,8 +87,9 @@ namespace Loja.Repository
         {
             IQueryable<Fornecedores> query = _context.Fornecedores;
 
-            query = query.OrderByDescending(x=>x.DataCadastro)
-            .Where(x=>x.Id == FornecedoresId);
+            query = query.AsNoTracking()
+                         .OrderByDescending(x=>x.DataCadastro)
+                         .Where(x=>x.Id == FornecedoresId);
 
             return await query.FirstOrDefaultAsync();
              
@@ -93,7 +100,8 @@ namespace Loja.Repository
            IQueryable<ItensPedidos> query = _context.ItensPedidos
            .Include(i=>i.Pedidos);
 
-            query = query.OrderByDescending(x=>x.DataCadastro);
+            query = query.AsNoTracking()
+                         .OrderByDescending(x=>x.DataCadastro);
 
             return await query.ToArrayAsync();
         }
@@ -102,7 +110,8 @@ namespace Loja.Repository
            IQueryable<ItensPedidos> query = _context.ItensPedidos
            .Include(i=>i.Pedidos);
 
-            query = query.OrderByDescending(x=>x.DataCadastro)
+            query = query.AsNoTracking()
+                         .OrderByDescending(x=>x.DataCadastro)
                    .Where(x=>x.Id == PedidosId);
 
             return await query.FirstOrDefaultAsync();
@@ -113,7 +122,8 @@ namespace Loja.Repository
             IQueryable<Pedidos> query = _context.Pedidos
             .Include(p=>p.Clientes);
 
-            query = query.OrderByDescending(x=>x.DataDoPedido);
+            query = query.AsNoTracking()
+                         .OrderByDescending(x=>x.DataDoPedido);
 
             return await query.ToArrayAsync();
         }
@@ -122,7 +132,8 @@ namespace Loja.Repository
             IQueryable<Pedidos> query = _context.Pedidos
             .Include(p=>p.Clientes);
 
-            query = query.OrderByDescending(x=>x.DataDoPedido)
+            query = query.AsNoTracking()
+                         .OrderByDescending(x=>x.DataDoPedido)
             .Where(x=>x.Id == PedidosId);
 
             return await query.FirstOrDefaultAsync();
@@ -134,7 +145,8 @@ namespace Loja.Repository
              .Include(p=>p.Categorias)
              .Include(p=>p.Fornecedores);
            
-             query = query.OrderByDescending(c=>c.DataCadastro);
+             query = query.AsNoTracking()
+                          .OrderByDescending(c=>c.DataCadastro);
 
              return await query.ToArrayAsync();
         }
@@ -144,7 +156,8 @@ namespace Loja.Repository
              .Include(p=>p.Categorias)
              .Include(p=>p.Fornecedores);
            
-             query = query.OrderByDescending(c=>c.DataCadastro)
+             query = query.AsNoTracking()
+                          .OrderByDescending(c=>c.DataCadastro)
              .Where(c=>c.Id == ProdutosId);
 
              return await query.FirstOrDefaultAsync();
