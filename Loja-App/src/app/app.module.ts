@@ -1,3 +1,5 @@
+import { ProdutoComponent } from './components/produto/produto.component';
+import { FornecedorComponent } from './components/fornecedor/fornecedor.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,7 +13,9 @@ import { MenuComponent } from './components/menu/menu.component';
     AppComponent,
     HeaderComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    FornecedorComponent,
+    ProdutoComponent
   ],
   imports: [
     BrowserModule,

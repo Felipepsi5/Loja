@@ -11,10 +11,10 @@ namespace Loja.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutosController : ControllerBase
+    public class ClientesController : ControllerBase
     {
         private readonly ILojaRepository _repo;
-        public ProdutosController(ILojaRepository repo)
+        public ClientesController(ILojaRepository repo)
         {
             _repo = repo;            
         }
@@ -24,7 +24,7 @@ namespace Loja.WebApi.Controllers
         {
             try
             {
-               var results = await _repo.GetAllProdutosAsync();
+               var results = await _repo.GetAllClientesAsync();
                return Ok(results);
             }
             catch(System.Exception)
@@ -39,7 +39,7 @@ namespace Loja.WebApi.Controllers
         {
             try
             {
-               var results = await _repo.GetProdutosAsyncById(Id);
+               var results = await _repo.GetClientesAsyncById(Id);
                return Ok(results);
             }
             catch(System.Exception)
@@ -49,7 +49,7 @@ namespace Loja.WebApi.Controllers
         }      
         // GET api/values
         [HttpPost]
-        public async Task<IActionResult> Post(Produtos model)
+        public async Task<IActionResult> Post(Clientes model)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace Loja.WebApi.Controllers
 
                if(await _repo.SaveChangesAsync())
                {
-                  return Created($"/api/Produtos/{model.Id}", model);
+                  return Created($"/api/Clientes/{model.Id}", model);
                }           
             }
             catch(System.Exception)
@@ -67,17 +67,17 @@ namespace Loja.WebApi.Controllers
             return BadRequest();
         }
         [HttpPut("{Id}")]
-        public async Task<IActionResult> Put(int Id, Produtos model)
+        public async Task<IActionResult> Put(int Id, Clientes model)
         {
             try
             {
-                var produto = await _repo.GetProdutosAsyncById(Id);
+                var produto = await _repo.GetClientesAsyncById(Id);
                 if(produto == null ) return NotFound();
 
                _repo.Update(model);
                if(await _repo.SaveChangesAsync())
                {
-                  return Created($"/api/Produtos/{model.Id}", model);
+                  return Created($"/api/Clientes/{model.Id}", model);
                }
               
             }
@@ -93,7 +93,7 @@ namespace Loja.WebApi.Controllers
         {
             try
             {
-                var produto = await _repo.GetProdutosAsyncById(Id);
+                var produto = await _repo.GetClientesAsyncById(Id);
                 if(produto == null ) return NotFound();
 
                _repo.Delete(produto);

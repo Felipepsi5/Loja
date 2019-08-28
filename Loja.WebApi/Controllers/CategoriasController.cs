@@ -11,10 +11,10 @@ namespace Loja.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutosController : ControllerBase
+    public class CategoriasController : ControllerBase
     {
         private readonly ILojaRepository _repo;
-        public ProdutosController(ILojaRepository repo)
+        public CategoriasController(ILojaRepository repo)
         {
             _repo = repo;            
         }
@@ -24,7 +24,7 @@ namespace Loja.WebApi.Controllers
         {
             try
             {
-               var results = await _repo.GetAllProdutosAsync();
+               var results = await _repo.GetAllCategoriasAsync();
                return Ok(results);
             }
             catch(System.Exception)
@@ -39,17 +39,18 @@ namespace Loja.WebApi.Controllers
         {
             try
             {
-               var results = await _repo.GetProdutosAsyncById(Id);
+               var results = await _repo.GetCategoriasAsyncById(Id);
                return Ok(results);
             }
             catch(System.Exception)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco Dados Falhou");
             }
-        }      
+        }
+        
         // GET api/values
         [HttpPost]
-        public async Task<IActionResult> Post(Produtos model)
+        public async Task<IActionResult> Post(Categorias model)
         {
             try
             {
@@ -57,7 +58,7 @@ namespace Loja.WebApi.Controllers
 
                if(await _repo.SaveChangesAsync())
                {
-                  return Created($"/api/Produtos/{model.Id}", model);
+                  return Created($"/api/Categorias/{model.Id}", model);
                }           
             }
             catch(System.Exception)
@@ -67,17 +68,17 @@ namespace Loja.WebApi.Controllers
             return BadRequest();
         }
         [HttpPut("{Id}")]
-        public async Task<IActionResult> Put(int Id, Produtos model)
+        public async Task<IActionResult> Put(int Id, Categorias model)
         {
             try
             {
-                var produto = await _repo.GetProdutosAsyncById(Id);
-                if(produto == null ) return NotFound();
+                var categoria = await _repo.GetCategoriasAsyncById(Id);
+                if(categoria == null ) return NotFound();
 
                _repo.Update(model);
                if(await _repo.SaveChangesAsync())
                {
-                  return Created($"/api/Produtos/{model.Id}", model);
+                  return Created($"/api/Categorias/{model.Id}", model);
                }
               
             }
@@ -93,10 +94,10 @@ namespace Loja.WebApi.Controllers
         {
             try
             {
-                var produto = await _repo.GetProdutosAsyncById(Id);
-                if(produto == null ) return NotFound();
+                var categoria = await _repo.GetCategoriasAsyncById(Id);
+                if(categoria == null ) return NotFound();
 
-               _repo.Delete(produto);
+               _repo.Delete(categoria);
                if(await _repo.SaveChangesAsync())
                {
                   return Ok();
