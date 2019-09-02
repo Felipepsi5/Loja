@@ -31,6 +31,7 @@ namespace Loja.WebApi
           );         
           services.AddScoped<ILojaRepository, LojaRepository>();
           services.AddMvc();
+          services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +47,7 @@ namespace Loja.WebApi
                 app.UseHsts();
             }
             // app.UseHttpsRedirection();
+            app.UseCors(x =>x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             app.UseMvc();
         }
     }
