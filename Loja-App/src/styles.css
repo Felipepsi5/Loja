@@ -1,8 +1,14 @@
 
 @import '~ngx-toastr/toastr';
 
-
 /* You can add global styles to this file, and also import other style files */
 #toast-content > div {
   opacity:1;
+}
+.invalid-feedback{
+  font-style: italic;
+  font-size: small;
+  color: red;
+
+
 }

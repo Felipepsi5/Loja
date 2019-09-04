@@ -1,10 +1,11 @@
 <div class="container">
   <div class="panel panel-default">
-    <div class="panel-heading"><h5>Cadastro Fornecedores</h5></div>
+    <div class="panel-heading"><h5><strong>Cadastro Fornecedores</strong></h5></div>
     <div class="panel-body">
       <form [formGroup]= "registerForm">
-      <div class="form-group input-group-sm col-md-4">
-        <label for="usr">Nome da Empresa:</label>
+        <div class="row">
+      <div class="form-group input-group-sm col-xs-4">
+        <label >Nome da Empresa:</label>
         <input type="text" class="form-control"
         formControlName="nomedaempresa" [ngClass]="{'is-invalid': registerForm.get('nomedaempresa').errors && registerForm.get('nomedaempresa').touched}"
          placeholder="Nome da Empresa">
@@ -13,8 +14,9 @@
          Nome da Empresa é Obrigatório.
       </div>
     </div>
+
       <div class="form-group input-group-sm col-xs-4">
-        <label for="usr">Nome do Contato:</label>
+        <label >Nome do Contato:</label>
         <input type="text" class="form-control"
         formControlName="nomedocontato" [ngClass]="{'is-invalid': registerForm.get('nomedocontato').errors && registerForm.get('nomedocontato').touched}"
         placeholder="Nome do Contato">
@@ -23,8 +25,9 @@
          Nome do Contato é Obrigatório.
       </div>
     </div>
+
       <div class="form-group input-group-sm col-xs-4">
-        <label for="usr">Cargo do Contato:</label>
+        <label >Cargo do Contato:</label>
         <input type="text" class="form-control"
         formControlName="cargodocontato" [ngClass]="{'is-invalid': registerForm.get('cargodocontato').errors && registerForm.get('cargodocontato').touched}"
         placeholder="Nome do Contato">
@@ -33,8 +36,11 @@
          Cargo do Contato é Obrigatório.
       </div>
     </div>
+  </div>
+
+ <div class="row">
       <div class="form-group input-group-sm col-xs-4">
-        <label for="usr">Endereço:</label>
+        <label >Endereço:</label>
         <input type="text" class="form-control"
         formControlName="endereco" [ngClass]="{'is-invalid': registerForm.get('endereco').errors && registerForm.get('endereco').touched}"
         placeholder="Endereço">
@@ -43,8 +49,9 @@
          Endereço é Obrigatório.
       </div>
     </div>
+
       <div class="form-group input-group-sm col-xs-4">
-        <label for="usr">Cidade:</label>
+        <label>Cidade:</label>
        <input type="text" class="form-control"
         formControlName="cidade" [ngClass]="{'is-invalid': registerForm.get('cidade').errors && registerForm.get('cidade').touched}"
         placeholder="cidade">
@@ -53,19 +60,22 @@
          Cidade é Obrigatório.
       </div>
     </div>
+
       <div class="form-group input-group-sm col-xs-4">
-        <label for="usr">UF:</label>
+        <label >UF:</label>
         <input type="text" class="form-control"
         formControlName="uf" [ngClass]="{'is-invalid': registerForm.get('uf').errors && registerForm.get('uf').touched}"
         placeholder="UF">
       <div *ngIf="registerForm.get('uf').hasError('required')
       && registerForm.get('uf').touched" class="invalid-feedback">
-         UF é Obrigatório.
+         <p>UF é Obrigatório.</p>
       </div>
     </div>
+ </div>
+ <div class="row">
       <div class="form-group input-group-sm col-xs-4">
-        <label for="usr">CEP:</label>
-        <input type="text" class="form-control"
+        <label >CEP:</label>
+        <input type="text" mask="00000-000" class="form-control"
         formControlName="cep" [ngClass]="{'is-invalid': registerForm.get('cep').errors && registerForm.get('cep').touched}"
         placeholder="CEP">
       <div *ngIf="registerForm.get('cep').hasError('required')
@@ -73,20 +83,20 @@
          CEP é Obrigatório.
       </div>
     </div>
+
       <div class="form-group input-group-sm col-xs-4">
-        <label for="usr">Pais:</label>
+        <label >Pais:</label>
         <input type="text" class="form-control"
         formControlName="pais" [ngClass]="{'is-invalid': registerForm.get('pais').errors && registerForm.get('pais').touched}"
         placeholder="Pais">
-
       <div *ngIf="registerForm.get('pais').hasError('required')
       && registerForm.get('pais').touched" class="invalid-feedback">
          Pais é Obrigatório.
       </div>
     </div>
       <div class="form-group input-group-sm col-xs-4">
-        <label for="usr">Telefone:</label>
-        <input type="text" class="form-control" formControlName="telefone"
+        <label >Telefone:</label>
+        <input type="text" mask="(00) 00000-0000"  class="form-control" formControlName="telefone"
         formControlName="telefone" [ngClass]="{'is-invalid': registerForm.get('telefone').errors && registerForm.get('telefone').touched}"
         placeholder="Telefone">
       <div *ngIf="registerForm.get('telefone').hasError('required')
@@ -94,10 +104,13 @@
          Telefone é Obrigatório.
       </div>
     </div>
+ </div>
+     <div class="row">
       <div class="form-group col-xs-4">
       <button type="button" class="btn btn-success" [disabled]="!registerForm.valid" (click)="salvarFornecedor()">Cadastrar</button>&nbsp;
-      <button type="button" class="btn btn-danger">Cancelar</button>
+      <button type="button" class="btn btn-danger" (click)="limparcampos()">Cancelar</button>
     </div>
+  </div>
   </form>
     </div>
   </div>

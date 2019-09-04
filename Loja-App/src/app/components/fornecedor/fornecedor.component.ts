@@ -26,7 +26,7 @@ export class FornecedorComponent implements OnInit {
   }
   validation() {
     this.registerForm = this.fb.group({
-        nomedaempresa: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
+        nomedaempresa: ['', Validators.required],
         nomedocontato: ['', Validators.required],
         cargodocontato: ['', Validators.required],
         endereco: ['', Validators.required ],
@@ -37,12 +37,16 @@ export class FornecedorComponent implements OnInit {
         telefone: ['', Validators.required]
       });
   }
+  limparcampos() {
+    this.registerForm.reset();
+  }
 
   salvarFornecedor(template: any) {
     this.fornecedores = Object.assign({}, this.registerForm.value);
     this.lojaservice.postFornecedor(this.fornecedores).subscribe(
       () => {
         this.toastr.success('Salvo com Sucesso!');
+        this.registerForm.reset();
       }, error => {
         this.toastr.error(`Erro ao Editar: ${error}`);
       }

@@ -1,0 +1,48 @@
+<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading"><h5><strong>Lista Fornecedores</strong></h5></div>
+  <div class="panel-body">
+    <div class="form-group col-xs-6">
+      <label class="mr-2">Filtro:</label><input type="text" class="form-control mr-2" placeholder="buscar"
+      [(ngModel)] = "filtroLista">
+    </div>
+    <table class="table table-striped">
+       <thead class="thead-light">
+               <tr>
+                 <th>#</th>
+                 <th>Nome da Empresa</th>
+                 <th>Nome do Contato</th>
+                 <th>Cargo do Contato</th>
+                 <th>Endereco</th>
+                 <th>Cidade</th>
+                 <th>UF</th>
+                 <th>CEP</th>
+                 <th>Pais</th>
+                 <th>Telefone</th>
+                 <th colspan="2">Opções</th>
+               </tr>
+       </thead>
+       <tbody *ngIf="fornecedores && fornecedores.length">
+         <tr *ngFor="let fornecedor of fornecedoresFiltrados">
+           <td>{{fornecedor.id}}</td>
+           <td>{{fornecedor.nomeDaEmpresa}}</td>
+           <td>{{fornecedor.nomeDoContato}}</td>
+           <td>{{fornecedor.cargoDoContato}}</td>
+           <td>{{fornecedor.endereco}}</td>
+           <td>{{fornecedor.cidade}}</td>
+           <td>{{fornecedor.uf}}</td>
+           <td>{{fornecedor.cep}}</td>
+           <td>{{fornecedor.pais}}</td>
+           <td>{{fornecedor.telefone}}</td>
+           <td>
+              <div class="btn-group">
+
+              </div>
+           </td>
+         </tr>
+       </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
