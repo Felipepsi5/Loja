@@ -35,7 +35,7 @@ export class FornecedoreditComponent implements OnInit {
   filtrarFornecedores(filtrarPor: string): Fornecedores[] {
       filtrarPor = filtrarPor.toLocaleLowerCase();
       return this.fornecedores.filter(
-          fornecedor => fornecedor.nomedaempresa.toLocaleLowerCase().indexOf(filtrarPor) !== -1
+          fornecedor => fornecedor.nomeDaEmpresa.toLocaleLowerCase().indexOf(filtrarPor) !== -1
       );
   }
   getFornecedores() {
@@ -53,15 +53,17 @@ export class FornecedoreditComponent implements OnInit {
   excluirFornecedor(fornecedor: Fornecedores, template: any) {
     this.openModal(template);
     this.fornecedor = fornecedor;
-    this.bodyDeletarFornecedor = `Tem certeza que deseja excluir o Fornecedor: ${fornecedor.nomedaempresa}`;
+    this.bodyDeletarFornecedor = `Tem certeza que deseja excluir o Fornecedor: ${fornecedor.nomeDaEmpresa}`;
   }
   confirmeDelete(template: any) {
     this.lojaService.deleteFornecedor(this.fornecedor.id).subscribe(
       () => {
+        template.hide();
         this.getFornecedores();
         this.toastr.success('Deletado com Sucesso');
       }, error => {
         this.toastr.error('Erro ao tentar Deletar');
+        console.log(error);
       }
     );
   }

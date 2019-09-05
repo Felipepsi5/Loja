@@ -9,6 +9,7 @@ import {NgxMaskModule} from 'ngx-mask';
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import {NgxPaginationModule} from 'ngx-pagination';
 import {BsDropdownModule, TooltipModule, ModalModule} from 'ngx-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { FornecedoreditComponent } from './components/fornecedor/fornecedoredit/
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot(),
     ReactiveFormsModule,
+    NgxPaginationModule,
     FormsModule
 
   ],

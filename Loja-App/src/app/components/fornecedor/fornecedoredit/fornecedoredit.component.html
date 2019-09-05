@@ -23,7 +23,7 @@
                </tr>
        </thead>
        <tbody *ngIf="fornecedores && fornecedores.length">
-         <tr *ngFor="let fornecedor of fornecedoresFiltrados">
+         <tr *ngFor="let fornecedor of fornecedoresFiltrados | paginate: {itemsPerPage: 5, currentPage: paginaAtual}; let i =index">
            <td>{{fornecedor.id}}</td>
            <td>{{fornecedor.nomeDaEmpresa}}</td>
            <td>{{fornecedor.nomeDoContato}}</td>
@@ -44,6 +44,7 @@
          </tr>
        </tbody>
     </table>
+    <pagination-controls (pageChange)="paginaAtual = $event"></pagination-controls>
     </div>
   </div>
 </div>
@@ -63,11 +64,11 @@
         <p>{{bodyDeletarFornecedor}}</p>
       </div>
       <div class="modal-footer btn-group d-flex">
-        <button type="button" class="btn btn-outline-primary" (click)="confirm.hide()">
-          CENCELAR
+        <button type="button" class="btn btn-primary" (click)="confirm.hide()">
+          Cancelar
         </button>
-        <button type="button" class="btn btn-outline-danger" (click)="confirmeDelete(confirm)">
-          DELETAR
+        <button type="button" class="btn btn-danger" (click)="confirmeDelete(confirm)">
+          Deletar
         </button>
       </div>
     </div>

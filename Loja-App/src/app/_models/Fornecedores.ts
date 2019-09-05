@@ -2,9 +2,9 @@ export class Fornecedores {
   constructor() {}
 
   id: number;
-  nomedaempresa: string;
-  nomedocontato: string;
-  cargodocontato: string;
+  nomeDaEmpresa: string;
+  nomeDoContato: string;
+  cargoDoContato: string;
   endereco: string;
   cidade: string;
   uf: string;
