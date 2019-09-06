@@ -2,7 +2,7 @@
 <div class="panel panel-default">
   <div class="panel-heading"><h5><strong>Lista Fornecedores</strong></h5></div>
   <div class="panel-body">
-    <div class="form-group col-xs-6">
+    <div class="form-group input-group-sm col-xs-4">
       <label class="mr-2">Filtro:</label><input type="text" class="form-control mr-2" placeholder="buscar"
       [(ngModel)] = "filtroLista">
     </div>
@@ -23,7 +23,7 @@
                </tr>
        </thead>
        <tbody *ngIf="fornecedores && fornecedores.length">
-         <tr *ngFor="let fornecedor of fornecedoresFiltrados | paginate: {itemsPerPage: 5, currentPage: paginaAtual}; let i =index">
+         <tr *ngFor="let fornecedor of fornecedoresFiltrados | paginate: {itemsPerPage: 10, currentPage: paginaAtual}; let i =index">
            <td>{{fornecedor.id}}</td>
            <td>{{fornecedor.nomeDaEmpresa}}</td>
            <td>{{fornecedor.nomeDoContato}}</td>
@@ -44,7 +44,7 @@
          </tr>
        </tbody>
     </table>
-    <pagination-controls (pageChange)="paginaAtual = $event"></pagination-controls>
+    <pagination-controls (pageChange)="paginaAtual = $event" previousLabel= "Anterior" nextLabel="Próximo"></pagination-controls>
     </div>
   </div>
 </div>
@@ -74,3 +74,4 @@
     </div>
   </div>
 </div>
+
