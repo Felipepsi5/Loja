@@ -5,6 +5,13 @@
    "version": "0.2.0",
    "configurations": [
         {
+
+        
+
+
+
+
+
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
@@ -32,5 +39,13 @@
             "request": "attach",
             "processId": "${command:pickProcess}"
         }
+        {
+            "name": "Angular debugging session",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}"
+          }
+        
     ]
 }

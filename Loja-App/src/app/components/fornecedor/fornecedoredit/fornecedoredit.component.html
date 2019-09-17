@@ -9,7 +9,6 @@
     <table class="table table-striped">
        <thead class="thead-light">
                <tr>
-                 <th>#</th>
                  <th>Nome da Empresa</th>
                  <th>Nome do Contato</th>
                  <th>Cargo do Contato</th>
@@ -23,9 +22,9 @@
                </tr>
        </thead>
        <tbody *ngIf="fornecedores && fornecedores.length">
-         <tr *ngFor="let fornecedor of fornecedoresFiltrados | paginate: {itemsPerPage: 10, currentPage: paginaAtual}; let i =index">
-           <td>{{fornecedor.id}}</td>
-           <td>{{fornecedor.nomeDaEmpresa}}</td>
+         <tr *ngFor="let fornecedor of fornecedoresFiltrados | paginate: {itemsPerPage: 5, currentPage: paginaAtual}; let i =index">
+          <!-- <td>{{fornecedor.id}}</td> -->
+          <td>{{fornecedor.nomeDaEmpresa}}</td>
            <td>{{fornecedor.nomeDoContato}}</td>
            <td>{{fornecedor.cargoDoContato}}</td>
            <td>{{fornecedor.endereco}}</td>
@@ -38,6 +37,9 @@
               <div class="btn-group">
                 <button class="btn btn-sm btn-danger" tooltip="Excluir" (click)="excluirFornecedor(fornecedor, confirm)">
                   <i class="fa fa-eraser"></i>
+                </button>
+                <button class="btn btn-sm btn-success" tooltip="Editar" (click)="editarFornecedor(fornecedor, template)">
+                  <i class="fa fa-edit"></i>
                 </button>
               </div>
            </td>
@@ -74,4 +76,127 @@
     </div>
   </div>
 </div>
+
+<div bsModal #template="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Editar Fornecedor</h4>
+        <button type="button" class="close pull-right" (click)="template.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="registerForm">
+          <div class="row">
+            <div class="form-group input-group-sm col-xs-4">
+              <label >Nome da Empresa:</label>
+              <input type="text" class="form-control"
+              formControlName="nomeDaEmpresa" [ngClass]="{'is-invalid': registerForm.get('nomeDaEmpresa').errors && registerForm.get('nomeDaEmpresa').touched}"
+               placeholder="Nome da Empresa">
+            <div *ngIf="registerForm.get('nomeDaEmpresa').hasError('required')
+            && registerForm.get('nomeDaEmpresa').touched" class="invalid-feedback">
+               Nome da Empresa é Obrigatório.
+            </div>
+          </div>
+
+            <div class="form-group input-group-sm col-xs-4">
+              <label >Nome do Contato:</label>
+              <input type="text" class="form-control"
+              formControlName="nomeDoContato" [ngClass]="{'is-invalid': registerForm.get('nomeDoContato').errors && registerForm.get('nomeDoContato').touched}"
+              placeholder="Nome do Contato">
+            <div *ngIf="registerForm.get('nomeDoContato').hasError('required')
+            && registerForm.get('nomeDoContato').touched" class="invalid-feedback">
+               Nome do Contato é Obrigatório.
+            </div>
+          </div>
+
+            <div class="form-group input-group-sm col-xs-4">
+              <label >Cargo do Contato:</label>
+              <input type="text" class="form-control"
+              formControlName="cargoDoContato" [ngClass]="{'is-invalid': registerForm.get('cargoDoContato').errors && registerForm.get('cargoDoContato').touched}"
+              placeholder="Nome do Contato">
+            <div *ngIf="registerForm.get('cargoDoContato').hasError('required')
+            && registerForm.get('cargoDoContato').touched" class="invalid-feedback">
+               Cargo do Contato é Obrigatório.
+            </div>
+          </div>
+        </div>
+
+       <div class="row">
+            <div class="form-group input-group-sm col-xs-4">
+              <label >Endereço:</label>
+              <input type="text" class="form-control"
+              formControlName="endereco" [ngClass]="{'is-invalid': registerForm.get('endereco').errors && registerForm.get('endereco').touched}"
+              placeholder="Endereço">
+            <div *ngIf="registerForm.get('endereco').hasError('required')
+            && registerForm.get('endereco').touched" class="invalid-feedback">
+               Endereço é Obrigatório.
+            </div>
+          </div>
+
+            <div class="form-group input-group-sm col-xs-4">
+              <label>Cidade:</label>
+             <input type="text" class="form-control"
+              formControlName="cidade" [ngClass]="{'is-invalid': registerForm.get('cidade').errors && registerForm.get('cidade').touched}"
+              placeholder="cidade">
+            <div *ngIf="registerForm.get('cidade').hasError('required')
+            && registerForm.get('cidade').touched" class="invalid-feedback">
+               Cidade é Obrigatório.
+            </div>
+          </div>
+
+            <div class="form-group input-group-sm col-xs-4">
+              <label >UF:</label>
+              <input type="text" class="form-control"
+              formControlName="uf" [ngClass]="{'is-invalid': registerForm.get('uf').errors && registerForm.get('uf').touched}"
+              placeholder="UF">
+            <div *ngIf="registerForm.get('uf').hasError('required')
+            && registerForm.get('uf').touched" class="invalid-feedback">
+               <p>UF é Obrigatório.</p>
+            </div>
+          </div>
+       </div>
+       <div class="row">
+            <div class="form-group input-group-sm col-xs-4">
+              <label >CEP:</label>
+              <input type="text" mask="00000-000" class="form-control"
+              formControlName="cep" [ngClass]="{'is-invalid': registerForm.get('cep').errors && registerForm.get('cep').touched}"
+              placeholder="CEP">
+            <div *ngIf="registerForm.get('cep').hasError('required')
+            && registerForm.get('cep').touched" class="invalid-feedback">
+               CEP é Obrigatório.
+            </div>
+          </div>
+
+            <div class="form-group input-group-sm col-xs-4">
+              <label >Pais:</label>
+              <input type="text" class="form-control"
+              formControlName="pais" [ngClass]="{'is-invalid': registerForm.get('pais').errors && registerForm.get('pais').touched}"
+              placeholder="Pais">
+            <div *ngIf="registerForm.get('pais').hasError('required')
+            && registerForm.get('pais').touched" class="invalid-feedback">
+               Pais é Obrigatório.
+            </div>
+          </div>
+            <div class="form-group input-group-sm col-xs-4">
+              <label >Telefone:</label>
+              <input type="text" mask="(00) 00000-0000"  class="form-control" formControlName="telefone"
+              formControlName="telefone" [ngClass]="{'is-invalid': registerForm.get('telefone').errors && registerForm.get('telefone').touched}"
+              placeholder="Telefone">
+            <div *ngIf="registerForm.get('telefone').hasError('required')
+            && registerForm.get('telefone').touched" class="invalid-feedback">
+               Telefone é Obrigatório.
+            </div>
+          </div>
+       </div>
+      <div class="modal-footer d-flex">
+        <button class="btn btn-secondary" (click)="template.hide()">
+          Fechar
+        </button>
+        <button class="btn btn-primary ml-auto" [disabled]="!registerForm.valid" (click)="salvarAlteracao(template)">
+          Salvar Alterações
+        </button>
+      </div>
+    </form>
 

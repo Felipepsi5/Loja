@@ -12,6 +12,6 @@ namespace Loja.Domain
         public string UF { get; set; } 
         public string Pais { get; set; } 
         public string Telefone { get; set; }  
-        public DateTime DataCadastro{ get; set; }      
+        public DateTime DataCadastro{ get ;set; }      
     }
 }

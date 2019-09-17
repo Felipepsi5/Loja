@@ -1,3 +1,5 @@
+import { DateTimeFormatPipePipe } from './../_helps/DateTimeFormatPipe.pipe';
+
 export class Fornecedores {
   constructor() {}
 
@@ -11,4 +13,5 @@ export class Fornecedores {
   cep: string;
   pais: string;
   telefone: string;
+  DataCadastro: Date;
 }

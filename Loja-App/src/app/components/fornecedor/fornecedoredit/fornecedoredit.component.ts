@@ -2,7 +2,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { LojaService } from './../../../services/loja.service';
 import { Component, OnInit } from '@angular/core';
 import { Fornecedores } from 'src/app/_models/Fornecedores';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-fornecedoredit',
@@ -19,11 +19,13 @@ export class FornecedoreditComponent implements OnInit {
   constructor(
     private lojaService: LojaService
   , private toastr: ToastrService
+  , private fb: FormBuilder
 
   ) { }
 
   ngOnInit() {
     this.getFornecedores();
+    this.validation();
   }
   get filtroLista(): string {
     return this._filtroLista;
@@ -63,9 +65,42 @@ export class FornecedoreditComponent implements OnInit {
         this.toastr.success('Deletado com Sucesso');
       }, error => {
         this.toastr.error('Erro ao tentar Deletar');
-        console.log(error);
+
       }
     );
+  }
+  validation() {
+    this.registerForm = this.fb.group({
+        nomeDaEmpresa: ['', Validators.required],
+        nomeDoContato: ['', Validators.required],
+        cargoDoContato: ['', Validators.required],
+        endereco: ['', Validators.required ],
+        cidade: ['', Validators.required],
+        uf: ['', Validators.required],
+        cep: ['', Validators.required],
+        pais: ['', Validators.required],
+        telefone: ['', Validators.required]
+      });
+  }
+  editarFornecedor(fornecedor: Fornecedores, template: any) {
+    this.openModal(template);
+    this.fornecedor = Object.assign({}, fornecedor);
+    this.registerForm.patchValue(this.fornecedor);
+    console.log(this.fornecedor);
+  }
+
+  salvarAlteracao(template: any) {
+     this.fornecedor = Object.assign({id: this.fornecedor.id}, this.registerForm.value);
+     console.log(this.fornecedor);
+     this.lojaService.putFornecedor(this.fornecedor).subscribe(
+       () => {
+        template.hide();
+        this.toastr.success('Editado com Sucesso!');
+        this.getFornecedores();
+      }, error => {
+        this.toastr.error(`Erro ao Editar: ${error}`);
+      }
+     );
   }
 
   openModal(template: any) {

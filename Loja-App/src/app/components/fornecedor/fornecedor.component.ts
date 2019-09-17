@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-fornecedor',
   templateUrl: './fornecedor.component.html',
@@ -43,6 +42,7 @@ export class FornecedorComponent implements OnInit {
 
   salvarFornecedor(template: any) {
     this.fornecedores = Object.assign({}, this.registerForm.value);
+    console.log(this.fornecedores);
     this.lojaservice.postFornecedor(this.fornecedores).subscribe(
       () => {
         this.toastr.success('Salvo com Sucesso!');
